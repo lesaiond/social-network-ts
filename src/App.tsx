@@ -1,16 +1,33 @@
 import React from "react";
-import { Header } from "./components/UI/Header/Header";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { MainPage } from "./pages/MainPage/MainPage";
+import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+import { Dz31x } from "./dz/31x";
+
+const routerConfig = createBrowserRouter([
+  {
+    path: "/dz",
+    element: <Dz31x />,
+  },
+  {
+    path: '/',
+    element: <MainPage />,
+  },
+  {
+    path: '/login',
+    element: <LoginPage />,
+  },
+  {
+    path: '/profile',
+    element: <ProfilePage />,
+  }
+])
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <Header />
-      <div className="container">
-        {/* <LoginPage /> */}
-        <MainPage />
-      </div>
+      <RouterProvider router={routerConfig} />
     </div>
   );
 };
