@@ -1,5 +1,6 @@
 import React from "react";
 import { reverse } from "dns";
+import { log } from "console";
 
 const str1: string = "ab1";
 export const Dz31x = () => {
@@ -27,16 +28,16 @@ export const Dz31x = () => {
   const num10: number = 1230;
 
   //booleans
-  const boolean1: Boolean = true;
-  const Boolean2: Boolean = true;
-  const Boolean3: Boolean = false;
-  const Boolean4: Boolean = true;
-  const Boolean5: Boolean = true;
-  const Boolean6: Boolean = false;
-  const Boolean7: Boolean = false;
-  const Boolean8: Boolean = true;
-  const Boolean9: Boolean = false;
-  const Boolean10: Boolean = true;
+  const boolean1: boolean = true;
+  const Boolean2: boolean = true;
+  const Boolean3: boolean = false;
+  const Boolean4: boolean = true;
+  const Boolean5: boolean = true;
+  const Boolean6: boolean = false;
+  const Boolean7: boolean = false;
+  const Boolean8: boolean = true;
+  const Boolean9: boolean = false;
+  const Boolean10: boolean = true;
 
   //objects
   type CustomObj = {
@@ -106,24 +107,33 @@ export const Dz31x = () => {
     return a * b;
   }
 
-  function esEven(a: number): Boolean {
-    return a % 2 === 0 ? true : false;
+  function isEven(a: number): boolean {
+    console.log(a % 2 === 0);
+    return a % 2 === 0;
   }
 
   function capitalize(p: string): string {
-    return capitalize(p);
+    let a = p.charAt(0).toUpperCase() + p.slice(1)
+
+    return a;
   }
 
-  function reverseArray(Array: Array<string>): Array<string> {
+  function reverseArray(Array: Array<string | number>): Array<string | number> {
+    console.log(Array.reverse());
+    
     return Array.reverse();
   }
 
-  function findMax(Array: Array<number>): Array<number> {
-    return findMax(Array);
+  function findMax(Array: Array<number>): number {
+    return Array.sort((a, b) => b + a)[0]
   }
 
-  function findString(Array: Array<any>): Array<string> {
-    return findString(Array);
+  function filterStrings(arr: (string | number | boolean)[]): string[] {
+    const stringArray: string[] = arr.filter(
+      (value) => typeof value === "string"
+    ) as string[];
+
+    return stringArray;
   }
 
   function calculateAverage(nums: Array<number>): number {
@@ -151,5 +161,5 @@ export const Dz31x = () => {
     return `${obj.day}.${obj.month}.${obj.year}`;
   }
 
-  return <span>Hi</span>;
+  return <span>{formatDate({day: 22, month: 11, year: 12})}</span>;
 };
