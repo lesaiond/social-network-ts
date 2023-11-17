@@ -66,7 +66,7 @@ export const LoginPage = () => {
                 isAlt={elem.alt}
               />
             ))}
-            <a className="reg__link google-link" href="#">
+            {/* <a className="reg__link google-link" href="#">
               <img src="./img/icons/google.svg" alt="Google" />
             </a>
             <a className="reg__link google-plus-link" href="#">
@@ -77,7 +77,7 @@ export const LoginPage = () => {
             </a>
             <a className="reg__link mail-ru-link" href="#">
               <img src="./img/icons/mail-ru.svg" alt="Mail.ru" />
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

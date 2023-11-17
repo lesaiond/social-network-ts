@@ -8,12 +8,7 @@ interface SignInByProps {
   isAlt: string;
 }
 
-export const SignInBy = (
-  { isClass }: SignInByProps,
-  { isSrc }: SignInByProps,
-  { isHref }: SignInByProps,
-  { isAlt }: SignInByProps
-) => {
+export const SignInBy = ({ isClass, isSrc, isHref, isAlt }: SignInByProps) => {
   return (
     <StyledSignInBy>
       <a className={isClass} href={isHref}>
