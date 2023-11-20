@@ -5,23 +5,24 @@ import { Button } from "../../components/UI/Button/Button";
 import { Input } from "../../components/UI/input/Input";
 import { Container } from "../../components/UI/Container/Container.style";
 import { RegistrationInfo } from "../../components/RegistrationInfo/registrationInfo";
-import { StyledLoginPage } from "./LoginPage.style";
+import { StyledRegistrationPage } from "./RegistrationPage.style";
 
-export const LoginPage = () => {
+export const RegistrationPage = () => {
   return (
     <Container>
-      <StyledLoginPage>
-        <div className="LoginPage">
-          <Heading headingText="Авторизация" />
+      <StyledRegistrationPage>
+        <div className="RegistrationPage">
+          <Heading headingText="Регистрация" />
           <form>
+            <Input isError={false} errorMessage="Error!!!" type="tel" placeholder="Имя и фамилия" />
             <Input isError={false} errorMessage="Error!!!" type="tel" placeholder="Номер телефона" />
             <Input isError={false} errorMessage="Error!" type="password" placeholder="Пароль" />
-            <Button buttonText="Войти" isPrimary={true} />
+            <Button buttonText="Зарегистрироваться" isPrimary={true} />
           </form>
-          <StyledLink to="/" linkText="Забыли пароль?" />
-          <RegistrationInfo linkText="Зарегистрироваться" authorizationText="У вас нет аккаунта?"/>
+          <StyledLink to="/logi" linkText="Забыли пароль?" />
+          <RegistrationInfo linkText="Войти" authorizationText="Уже есть аккаунт?"/>
         </div>
-      </StyledLoginPage>
+      </StyledRegistrationPage>
     </Container>
   );
 };

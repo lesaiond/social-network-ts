@@ -2,13 +2,10 @@ import React from "react";
 import { StyledButton } from "./Button.style";
 
 interface ButtonProps {
-  buttonText: string
+  buttonText: string;
+  isPrimary: boolean;
 }
 
-export const Button  = ({buttonText}: ButtonProps) => {
-  return(
-    <StyledButton>
-      {buttonText}
-    </StyledButton>
-  )
-}
+export const Button = ({ buttonText, isPrimary }: ButtonProps) => {
+  return <StyledButton $isPrimary={isPrimary} >{buttonText}</StyledButton>;
+};

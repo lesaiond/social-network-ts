@@ -4,6 +4,7 @@ import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { MainPage } from "./pages/MainPage/MainPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { Dz31x } from "./dz/31x";
+import { RegistrationPage } from "./pages/RegistrationPage/RegistrationPage";
 
 const routerConfig = createBrowserRouter([
   {
@@ -21,6 +22,10 @@ const routerConfig = createBrowserRouter([
   {
     path: '/profile',
     element: <ProfilePage />,
+  },
+  {
+    path: '/registration',
+    element: <RegistrationPage />,
   }
 ])
 
