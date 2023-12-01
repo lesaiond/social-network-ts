@@ -6,10 +6,10 @@ interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   isError: boolean,
 }
 
-export const Input = ({ placeholder, type, errorMessage, isError }: IInputProps) => {
+export const Input = ({ placeholder, type, errorMessage, isError, ...props }: IInputProps) => {
   return (
     <InputContainer>
-      <StyledInput type={type} placeholder={placeholder} />
+      <StyledInput $isError={isError} type={type} placeholder={placeholder} {...props} />
       {isError && <ErrorMessage>{errorMessage}</ErrorMessage>}
     </InputContainer>
   );

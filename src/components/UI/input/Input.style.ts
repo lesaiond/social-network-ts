@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const InputContainer = styled.div`
 
@@ -9,7 +9,11 @@ export const ErrorMessage = styled.p`
   margin-top: 10px;
 `;
 
-export const StyledInput = styled.input`
+interface IStyledInputProps {
+  $isError: boolean,
+}
+
+export const StyledInput = styled.input<IStyledInputProps>`
   padding: 12px 15px;
   background-color: ${(props) => props.theme.colors.bgc};
   border-radius: 10px;
@@ -20,6 +24,10 @@ export const StyledInput = styled.input`
   margin-bottom: 20px;
   border: 2px solid ${(props) => props.theme.colors.disabledBgc};
   background-color: transparent;
+
+  ${props => props.$isError && css`
+    border-color: ${props => props.theme.colors.red}
+  `}
 
   &:last-child {
     margin-bottom: 40px;

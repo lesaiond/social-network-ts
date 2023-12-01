@@ -5,6 +5,7 @@ import { MainPage } from "./pages/MainPage/MainPage";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { Dz31x } from "./dz/31x";
 import { RegistrationPage } from "./pages/RegistrationPage/RegistrationPage";
+import { ForgetPasswordPage } from "./pages/ForgetPasswordPage/ForgetPasswordPage";
 
 const routerConfig = createBrowserRouter([
   {
@@ -26,7 +27,11 @@ const routerConfig = createBrowserRouter([
   {
     path: '/registration',
     element: <RegistrationPage />,
-  }
+  },
+  {
+    path: '/forgetPassword',
+    element: <ForgetPasswordPage />,
+  },
 ])
 
 const App: React.FC = () => {

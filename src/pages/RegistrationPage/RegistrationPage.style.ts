@@ -9,7 +9,7 @@ export const StyledRegistrationPage = styled.div`
   padding: 40px;
   h1 {
     margin-bottom: 50px;
-  }
+  } 
 
   a {
     display: inline-block;
