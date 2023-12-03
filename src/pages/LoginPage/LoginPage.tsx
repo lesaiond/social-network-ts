@@ -86,7 +86,7 @@ export const LoginPage = () => {
             />
             <Button buttonText="Войти" isPrimary={true} />
           </form>
-          <StyledLink to="/" linkText="Забыли пароль?" />
+          <StyledLink to="/forgetPassword" linkText="Забыли пароль?" />
           <RegistrationInfo
             linkText="Зарегистрироваться"
             authorizationText="У вас нет аккаунта?"
