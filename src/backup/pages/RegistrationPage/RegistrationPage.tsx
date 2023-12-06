@@ -11,28 +11,37 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../store/store";
-import { setUser } from "../../store/authSlice";
+import { setUser } from "../../store/slices/authSlice";
 
 interface IRegistrationaForm {
   username: string;
   userphone: string;
   userpassword: string;
+  useremail: string;
+  usercity: string;
 }
 
-const regexUZB = /^(?:\+998)?(?:\d{2})?(?:\d{7})$/
+const regexUZB = /^(?:\+998)?(?:\d{2})?(?:\d{7})$/;
 
 const registrationSchema = yup.object({
   // username: value
   username: yup.string().required("Обязательное поле!"),
-  userphone: yup.string().matches(regexUZB, "Введите узбекские номер телефона!").required("Обязательное поле!"),
-  userpassword: yup.string().min(4, "Пароль должен содержать минимум 4 символа!").required("Обязательное поле!"),
+  userphone: yup
+    .string()
+    .matches(regexUZB, "Введите узбекские номер телефона!")
+    .required("Обязательное поле!"),
+  userpassword: yup
+    .string()
+    .min(4, "Пароль должен содержать минимум 4 символа!")
+    .required("Обязательное поле!"),
+  useremail: yup.string().email().required("Обязательное поле!"),
+  usercity: yup.string().required("Обязательное поле!"),
 });
 
 export const RegistrationPage = () => {
-    
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const user = useSelector((state: RootState) => state.userSlice.user)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state: RootState) => state.userSlice.user);
   const {
     control,
     handleSubmit,
@@ -43,15 +52,17 @@ export const RegistrationPage = () => {
       username: "",
       userphone: "",
       userpassword: "",
+      useremail: "",
+      usercity: "",
     },
   });
   console.log("ERRORS: ", errors);
 
   const onRegistrationSubmit: SubmitHandler<IRegistrationaForm> = (data) => {
-    console.error("Form submitted!");    
+    console.error("Form submitted!");
     console.log("DATA: ", data);
     dispatch(setUser(data.username));
-    navigate("/")
+    navigate("/");
   };
   return (
     <Container>
@@ -64,9 +75,22 @@ export const RegistrationPage = () => {
               control={control}
               render={(field) => (
                 <Input
-                  isError={errors.userphone ? true : false}
-                  errorMessage="Введите своё имя"
-                  type="tel"
+                  isError={errors.username ? true : false}
+                  errorMessage={errors.username?.message}
+                  type="text"
+                  placeholder="Имя"
+                  {...field}
+                />
+              )}
+            />
+            <Controller
+              name="username"
+              control={control}
+              render={(field) => (
+                <Input
+                  isError={errors.useremail ? true : false}
+                  errorMessage={errors.useremail?.message}
+                  type="email"
                   placeholder="Имя"
                   {...field}
                 />
@@ -78,7 +102,7 @@ export const RegistrationPage = () => {
               render={(field) => (
                 <Input
                   isError={errors.userphone ? true : false}
-                  errorMessage="Введите узбекские номер телефона!"
+                  errorMessage={errors.userphone?.message}
                   type="tel"
                   placeholder="Номер телефона"
                   {...field}
@@ -91,7 +115,7 @@ export const RegistrationPage = () => {
               render={(field) => (
                 <Input
                   isError={errors.userphone ? true : false}
-                  errorMessage="Error!"
+                  errorMessage={errors.userpassword?.message}
                   type="password"
                   placeholder="Придумайте надёжный пароль"
                   {...field}

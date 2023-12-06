@@ -4,12 +4,13 @@ import { Header } from "../../components/UI/Header/Header";
 import { useTypedSelector } from "../../hooks/useTypeSelector";
 
 export const ProfilePage = () => {
-  const user = useTypedSelector((state) => state.userSlice.user)
+//  const user = useTypedSelector((state) => state.userSlice.user)
+
 
   return (
     <div className="container">
       <Header />
-      <div className="ProfilePage">
+      {/* <div className="ProfilePage">
         <aside className="LeftSide">
           <nav className="Navbar">
             <ul className="navbar__list">
@@ -838,7 +839,7 @@ export const ProfilePage = () => {
             </div>
           </div>
         </aside>
-      </div>
+      </div> */}
     </div>
   );
 };

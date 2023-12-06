@@ -1,38 +1,34 @@
 import React from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+// import { Header } from "./components/UI/Header/Header";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { MainPage } from "./pages/MainPage/MainPage";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
-import { Dz31x } from "./dz/31x";
-import { RegistrationPage } from "./pages/RegistrationPage/RegistrationPage";
+import { ReagistrationPage } from "./pages/ReagistrationPage/ReagistrationPage";
 import { ForgetPasswordPage } from "./pages/ForgetPasswordPage/ForgetPasswordPage";
 
 const routerConfig = createBrowserRouter([
   {
-    path: "/dz",
-    element: <Dz31x />,
-  },
-  {
-    path: '/',
-    element: <MainPage />,
-  },
-  {
-    path: '/login',
+    path: "/login",
     element: <LoginPage />,
   },
   {
-    path: '/profile',
+    path: "/",
+    element: <MainPage />,
+  },
+  {
+    path: "/profile",
     element: <ProfilePage />,
   },
   {
-    path: '/registration',
-    element: <RegistrationPage />,
+    path: "/reagistration",
+    element: <ReagistrationPage />,
   },
   {
-    path: '/forgetPassword',
+    path: "/forgetpassword",
     element: <ForgetPasswordPage />,
   },
-])
+]);
 
 const App: React.FC = () => {
   return (

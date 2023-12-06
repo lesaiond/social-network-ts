@@ -3,11 +3,16 @@ import { SignInBy } from "../../components/UI/SignInBy/SignInBy";
 import { StyledLink } from "../Typography/StyledLink";
 
 interface supText {
-  authorizationText: string,
-  linkText: string,
+  authorizationText: string;
+  linkText: string;
+  question: string,
 }
 
-export const RegistrationInfo = ({authorizationText, linkText}: supText) => {
+export const RegistrationInfo = ({
+  question,
+  authorizationText,
+  linkText,
+}: supText) => {
   interface SocialIcon {
     src: string;
     alt: string;
