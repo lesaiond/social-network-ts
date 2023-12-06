@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./MainPage.scss";
 import { Header } from "../../components/UI/Header/Header";
 import { Container } from "../../components/UI/Container/Container.style";
+import { Post } from "../../components/Post/Post";
+import { useGetPostListQuery, useLazyGetPostListQuery } from "../../store/postApi";
 
 export const MainPage = () => {
+  const { data, isLoading, isError } = useGetPostListQuery(null);
+  
+  // const [ fetchTrigger , { data, isLoading, isError } ] = useLazyGetPostListQuery()
+  
+  
+  // useEffect(() => {
+  //   fetchTrigger(null)
+    
+  // }, [fetchTrigger, data])
+
+  useEffect(() => {
+    console.log("DATA:", data);
+    
+  }, [data])
+
   return (
     <Container>
       <div className="container">
@@ -387,7 +404,11 @@ export const MainPage = () => {
                 </div>
               </div>
             </div>
-            <div className="Post _liked _marked">
+
+            {data?.message.length &&
+              data.message.map((post) => <Post postText={post.main_text} regDate={post.reg_date} userName={post.user_fk.name} />)}
+
+            {/* <div className="Post _liked _marked">
               <div className="UserElem">
                 <img src="./img/users/aleksandr-maykov.jpeg" alt="User" />
                 <div className="user__description">
@@ -640,7 +661,7 @@ export const MainPage = () => {
                   <circle id="ellipse_3" cx="2.5" cy="2.5" r="2.5" />
                 </g>
               </svg>
-            </div>
+            </div> */}
           </main>
           <aside className="RightSide">
             <div className="List">
