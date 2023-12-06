@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { RootState } from "../../store/store";
 import { setUser } from "../../store/slices/authSlice";
+import { useRegisterUserMutation } from "../../store/API/authApi";
 
 interface IRegistrationaForm {
   username: string;
@@ -58,11 +59,20 @@ export const RegistrationPage = () => {
   });
   console.log("ERRORS: ", errors);
 
+  const [registerUser, { data: userData }] = useRegisterUserMutation();
+
   const onRegistrationSubmit: SubmitHandler<IRegistrationaForm> = (data) => {
     console.error("Form submitted!");
     console.log("DATA: ", data);
     dispatch(setUser(data.username));
-    navigate("/");
+    navigate("/profile");
+    registerUser({
+      name: data.username,
+      email: data.useremail,
+      phone_number: data.userphone,
+      password: data.userpassword,
+      user_city: data.usercity
+    });
   };
   return (
     <Container>
@@ -71,14 +81,14 @@ export const RegistrationPage = () => {
           <Heading headingText="Регистрация" />
           <form onSubmit={handleSubmit(onRegistrationSubmit)}>
             <Controller
-              name="username"
+              name="usercity"
               control={control}
               render={(field) => (
                 <Input
-                  isError={errors.username ? true : false}
-                  errorMessage={errors.username?.message}
+                  isError={errors.usercity ? true : false}
+                  errorMessage={errors.usercity?.message}
                   type="text"
-                  placeholder="Имя"
+                  placeholder="Город"
                   {...field}
                 />
               )}
@@ -88,10 +98,23 @@ export const RegistrationPage = () => {
               control={control}
               render={(field) => (
                 <Input
+                  isError={errors.username ? true : false}
+                  errorMessage={errors.username?.message}
+                  type="text"
+                  placeholder="Имя и Фамилия"
+                  {...field}
+                />
+              )}
+            />
+            <Controller
+              name="useremail"
+              control={control}
+              render={(field) => (
+                <Input
                   isError={errors.useremail ? true : false}
                   errorMessage={errors.useremail?.message}
                   type="email"
-                  placeholder="Имя"
+                  placeholder="Почта"
                   {...field}
                 />
               )}

@@ -6,15 +6,6 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isPrimary: boolean;
 }
 
-export const Button = ({
-  buttonText,
-  isPrimary,
-  type,
-  disabled,
-}: ButtonProps) => {
-  return (
-    <StyledButton disabled={disabled} type={type} $isPrimary={isPrimary}>
-      {buttonText}
-    </StyledButton>
-  );
+export const Button = ({ buttonText, isPrimary, type }: ButtonProps) => {
+  return <StyledButton type={type} $isPrimary={isPrimary} >{buttonText}</StyledButton>;
 };

@@ -3,8 +3,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./styles/base.scss";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./styles/theme/theme";
-import { GlobalStyle } from "./styles/theme/globalStyle";
+import { theme } from "./theme/theme";
+import { GlobalStyle } from "./theme/globalStyle";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 
@@ -21,4 +21,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
- 

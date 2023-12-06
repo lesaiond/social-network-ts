@@ -1,4 +1,4 @@
-import {PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface IUserSliceState {
   user: IChangeUserPayload | null;
@@ -14,16 +14,16 @@ export interface IUser {
 }
 
 interface IChangeUserPayload {
-  useremail: string;
-  userpassword: string;
+  useremail: string,
+  userpassword: string,
 }
 
 const initialState: IUserSliceState = {
   user: null,
 };
 
-const userSlice = createSlice({
-  name: "userSlice",
+export const userSlice = createSlice({
+  name: "userSLice",
   initialState,
   reducers: {
     changeUser(state, action: PayloadAction<IChangeUserPayload>) {

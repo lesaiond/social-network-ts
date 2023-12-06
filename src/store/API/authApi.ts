@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { baseUrl } from "../../utils/baseUrl";
 
 interface IRegisterUserPayload {
   name: string;
@@ -35,7 +34,7 @@ interface IGetUserResponse {
 
 export const authApi = createApi({
   reducerPath: "authApi",
-  baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
+  baseQuery: fetchBaseQuery({ baseUrl: "http://161.35.153.209:5430/docs#/api" }),
   endpoints: (builder) => ({
     registerUser: builder.mutation<IRegisterUserResponse, IRegisterUserPayload>(
       {

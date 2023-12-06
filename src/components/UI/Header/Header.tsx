@@ -5,7 +5,7 @@ export const Header = () => {
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
 
   return (
-    <div className="Header">
+    <header className="Header">
       <div className="Header__logo">
         <a href="#">
           <svg
@@ -96,6 +96,6 @@ export const Header = () => {
           />
         </svg>
       </div>
-    </div>
+    </header>
   );
 };

@@ -6,18 +6,18 @@ type StyledButtonProps = {
 };
 
 export const StyledButton = styled.button<StyledButtonProps>`
-  cursor: pointer;
+  cursor: pointer;  
   padding: 12px 15px;
   font-size: inherit;
   border-radius: 10px;
-
-  transition: 200ms;
-  width: 100%;
-  margin-bottom: 30px;
-
   border: 1px solid transparent;
   outline: 0;
   font-family: inherit;
+  /* background-color: var(--prime-color); */
+  color: white;
+  transition: 200ms;
+  width: 100%;
+  margin-bottom: 30px;
 
   ${(props) =>
     props.$isPrimary &&
@@ -25,6 +25,7 @@ export const StyledButton = styled.button<StyledButtonProps>`
       background-color: ${(props) => props.theme.colors.primeColor};
       color: white;
     `}
+
   ${(props) =>
     props.isSecondary &&
     css`

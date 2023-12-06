@@ -1,53 +1,38 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import * as yup from "yup";
-import { RegistrationInfo } from "../../components/RegistrationInfo/registrationInfo";
+import React, { useEffect } from "react";
+import { Controller, useForm, SubmitHandler } from "react-hook-form";
 import { Heading } from "../../components/Typography/Heading";
-import { StyledLink } from "../../components/Typography/StyledLink";
 import { Button } from "../../components/UI/Button/Button";
+import { Input } from "../../components/UI/input/Input";
 import { Container } from "../../components/UI/Container/Container.style";
-import { Input } from "../../components/UI/Input/Input";
+import { RegistrationInfo } from "../../components/RegistrationInfo/registrationInfo";
 import { StyledLoginPage } from "./LoginPage.style";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../store/store";
-import { useEffect } from "react";
+import { Header } from "../../components/UI/Header/Header";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useNavigate } from "react-router-dom";
 import { useLoginUserMutation } from "../../store/API/authApi";
+import { StyledLink } from "../../components/Typography/StyledLink";
+
 
 interface ILoginForm {
   useremail: string;
   userpassword: string;
 }
 
-// const regexUZB = /^(?:\+998)?(?:\d{2})?(?:\d{7})$/;
-
 const loginFormSchema = yup.object({
-  useremail: yup
-    .string()
-    .email()
-    // .matches(regexUZB, "Введите узбекский номер телефона!")
-    .required("Обязательное поле!"),
+  useremail: yup.string().email().required("Обязательное поле!"),
   userpassword: yup
     .string()
-    .min(4, "Пароль должен содержать как минимум 4 символа!")
+    .min(4, "Пароль должен содержат ")
     .required("Обязательное поле!"),
 });
-
-// const mockUser = {
-//   user_id: 1,
-//   mail: "vasya@mail.com",
-//   phone_number: "1234567",
-//   name: "Vasya Petrov",
-//   reg_date: new Date().toISOString(),
-//   city: "Andijan",
-// };
 
 export const LoginPage = () => {
   const {
     control,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<ILoginForm>({
     resolver: yupResolver(loginFormSchema),
     defaultValues: {
       useremail: "",
@@ -55,29 +40,26 @@ export const LoginPage = () => {
     },
   });
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const user = useSelector((state: RootState) => state.userSlice.user);
 
   const [loginUser, { data: userData }] = useLoginUserMutation();
 
   const onLoginSubmit: SubmitHandler<ILoginForm> = (data) => {
-    loginUser({ email: data.useremail, password: userpassword });
-    // dispatch(changeUser(data));
-    // console.table(data);
+    loginUser({ email: data.useremail, password: data.userpassword });
   };
 
   useEffect(() => {
-    console.log("USER: ", user);
+    // console.log(userData)
 
     if (userData?.user_id) {
       navigate("/profile");
     }
-  }, [useData, navigate]);
+  }, [userData, navigate]);
 
   return (
     <Container>
       <StyledLoginPage>
+        <Header />
         <Heading headingText="Авторизация" />
         <form onSubmit={handleSubmit(onLoginSubmit)}>
           <Controller
@@ -107,18 +89,20 @@ export const LoginPage = () => {
             )}
           />
           <Button
-            disabled={!!Object.keys(errors).length}
             isPrimary
+            disabled={!!Object.keys(errors).length}
             type="submit"
             buttonText="Войти"
           />
         </form>
-        <StyledLink to="/" linkText="Забыли пароль?" />
-        <RegistrationInfo
-          question="У вас нет аккаунта?"
-          linkLabel="Зарегистрироваться"
-          linkURL="/registration"
-        />
+        <StyledLink to="/forgetpassword" linkText="Забыли пароль?" />
+        <div className="textLogin">
+          <span>
+            У вас нет аккаунта? <a href="./reagistration">Зарегистрироваться</a>
+          </span>
+          <p>Войти с помощью</p>
+        </div>
+        <RegistrationInfo authorizationText="Уже есть аккаунт?" linkText="/login"/>
       </StyledLoginPage>
     </Container>
   );

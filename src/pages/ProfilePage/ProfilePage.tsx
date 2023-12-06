@@ -4,13 +4,12 @@ import { Header } from "../../components/UI/Header/Header";
 import { useTypedSelector } from "../../hooks/useTypeSelector";
 
 export const ProfilePage = () => {
-//  const user = useTypedSelector((state) => state.userSlice.user)
-
+  const user = useTypedSelector((state) => state.userSlice.user)
 
   return (
     <div className="container">
       <Header />
-      {/* <div className="ProfilePage">
+      <div className="ProfilePage">
         <aside className="LeftSide">
           <nav className="Navbar">
             <ul className="navbar__list">
@@ -257,7 +256,7 @@ export const ProfilePage = () => {
           <div className="user__block">
             <img src="./img/users/denis-frolov.jpeg" alt="Denis Frolov" />
             <div className="user__description">
-              <h1 className="user__name">{user?.name}</h1>
+              <h1 className="user__name">{user?.useremail}</h1>
               <div className="user__info">
                 <div className="parameter">
                   <span className="key">Друзья</span>
@@ -839,7 +838,7 @@ export const ProfilePage = () => {
             </div>
           </div>
         </aside>
-      </div> */}
+      </div>
     </div>
   );
 };

@@ -5,11 +5,9 @@ import { StyledLink } from "../Typography/StyledLink";
 interface supText {
   authorizationText: string;
   linkText: string;
-  question: string,
 }
 
 export const RegistrationInfo = ({
-  question,
   authorizationText,
   linkText,
 }: supText) => {
