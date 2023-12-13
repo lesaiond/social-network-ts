@@ -1,0 +1,57 @@
+.WhatsNew {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1750px) {
+  .WhatsNew {
+    box-shadow: 0 0 10px var(--light-gray);
+    background-color: var(--elems-bgc);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .WhatsNew img {
+    flex: 0 0 40px;
+    border-radius: 50%;
+    height: 40px;
+    object-fit: cover;
+  }
+  .WhatsNew input {
+    flex: 1 1 auto;
+    background: transparent;
+  }
+  .WhatsNew .icons-wrapper {
+    flex: 0 1 20%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+  }
+  .WhatsNew .icons-wrapper .icon {
+    cursor: pointer;
+    flex: 0 0 24px;
+    width: 24px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    fill: var(--prime-color);
+    padding: 10px;
+    box-sizing: content-box;
+    transition: 200ms;
+  }
+  .WhatsNew .icons-wrapper .icon:hover {
+    border-color: var(--light-gray);
+    background-color: var(--bgc);
+  }
+  .WhatsNew .icons-wrapper .icon:active {
+    transition: 100ms;
+    background-color: var(--prime-color);
+    fill: white;
+  }
+}
+@media (max-width: 730px) {
+  .WhatsNew {
+    padding: 10px 15px;
+  }
+}

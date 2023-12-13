@@ -93,6 +93,7 @@ export const ForgetPasswordPage = () => {
                       errorMessage="Error!!!"
                       type="tel"
                       placeholder="Введите код"
+                      {...field}
                     />
                   )}
                 />
@@ -116,6 +117,7 @@ export const ForgetPasswordPage = () => {
                       errorMessage="Error!!!"
                       type="tel"
                       placeholder="Новый пароль"
+                      {...field}
                     />
                   )}
                 />
@@ -128,6 +130,7 @@ export const ForgetPasswordPage = () => {
                       errorMessage="Error!!!"
                       type="tel"
                       placeholder="Повторите пароль"
+                      {...field}
                     />
                   )}
                 />

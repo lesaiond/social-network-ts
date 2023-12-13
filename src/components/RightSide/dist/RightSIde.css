@@ -1,0 +1,18 @@
+.RightSide {
+  grid-area: R;
+}
+.RightSide .bio {
+  margin-bottom: 20px;
+}
+.RightSide .List {
+  margin-bottom: 20px;
+}
+.RightSide .FriendsBlock {
+  margin-bottom: 20px;
+}
+
+@media (max-width: 1440px) {
+  .RightSide {
+    display: none;
+  }
+}
